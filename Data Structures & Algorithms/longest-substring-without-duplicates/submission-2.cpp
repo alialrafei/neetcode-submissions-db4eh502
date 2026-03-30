@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s.size() == 0)
+            return 0;
+        int l = 0;
+        int r = 0;
+        int n = s.size();
+        int see[128];
+        memset(see, 0, sizeof(see));
+        int answer = 1;
+        while (r < n) {
+
+            if (see[s[r]] >= 1) {
+                see[s[l]]--;
+                l++;
+            } else {
+                see[s[r]]++;
+                answer = max(answer, r - l + 1);
+                r++;
+            }
+        }
+        return answer = max(answer, r - l);
+    }
+};
